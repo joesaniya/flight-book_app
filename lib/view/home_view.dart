@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flight_booking_app/controller/home_controller.dart';
 import 'package:flight_booking_app/utils/app_colors.dart';
+import 'package:flight_booking_app/view/ticket_view.dart';
 import 'package:flight_booking_app/view/widgets/custom_textfield.dart';
 import 'package:flight_booking_app/view/widgets/elevated_button.dart';
 import 'package:flight_booking_app/view/widgets/hotel_package.dart';
@@ -264,7 +267,27 @@ class HomeView extends StatelessWidget {
                         StyledButton(
                           text: 'Search Flights',
                           onPressed: () {
-                            print('Button Pressed!');
+                            log('Button Pressed!');
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        TicketView(),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  return RotationTransition(
+                                    turns: Tween(begin: 0.0, end: 1.0)
+                                        .animate(animation),
+                                    child: ScaleTransition(
+                                      scale: Tween(begin: 0.0, end: 1.0)
+                                          .animate(animation),
+                                      child: child,
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
                           },
                         ),
                       ],
