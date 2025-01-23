@@ -1,6 +1,10 @@
 import 'package:flight_booking_app/controller/home_controller.dart';
 import 'package:flight_booking_app/utils/app_colors.dart';
 import 'package:flight_booking_app/view/widgets/custom_textfield.dart';
+import 'package:flight_booking_app/view/widgets/elevated_button.dart';
+import 'package:flight_booking_app/view/widgets/hotel_package.dart';
+import 'package:flight_booking_app/view/widgets/input_label_widget.dart';
+import 'package:flight_booking_app/view/widgets/insprationwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,422 +46,243 @@ class HomeView extends StatelessWidget {
             ),
           ],
         ),
-        body: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.24,
-              child: Stack(
-                children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/boat_sea.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 15,
-                    top: 10,
-                    child: Text(
-                      'Let\'s start your trip',
-                      style: GoogleFonts.metrophobic(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        height: 1.56,
-                        decoration: TextDecoration.none,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: MediaQuery.of(context).size.height * 0.16,
-                    left: 10,
-                    right: 10,
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
+        body: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.24,
+                child: Stack(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            offset: Offset(0, -2),
-                            blurRadius: 6,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          buildOption('Round Trip', controller, context),
-                          buildOption('One Way', controller, context),
-                          buildOption('Multi-city', controller, context),
-                        ],
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/boat_sea.png'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-
-            // 2
-            Container(
-              height: 150,
-              margin: EdgeInsets.symmetric(horizontal: 12),
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Stack(
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        CustomTextField(
-                          hintText: "From",
-                          imagePath: 'assets/icons/departure_icon.png',
-                          controller: controller.fromController,
+                    Positioned(
+                      left: 15,
+                      top: 10,
+                      child: Text(
+                        'Let\'s start your trip',
+                        style: GoogleFonts.metrophobic(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          height: 1.56,
+                          decoration: TextDecoration.none,
                         ),
-                        Container(
-                          height: 2,
-                          width: MediaQuery.of(context).size.width * 0.7,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.green,
-                                Colors.green.withOpacity(0.1),
-                              ],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
+                      ),
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height * 0.16,
+                      left: 10,
+                      right: 10,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              offset: Offset(0, -2),
+                              blurRadius: 6,
                             ),
-                          ),
+                          ],
                         ),
-                        CustomTextField(
-                          hintText: "To",
-                          imagePath: 'assets/icons/location1.png',
-                          controller: controller.toController,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            buildOption('Round Trip', controller, context),
+                            buildOption('One Way', controller, context),
+                            buildOption('Multi-city', controller, context),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    top: 50,
-                    right: 20,
-                    child: Container(
-                      margin: EdgeInsets.all(5),
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: Color(0xffECF2E7)),
-                      child:
-                          Center(child: Image.asset('assets/icons/swap.png')),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-
-            //3
-            Container(
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 12),
-              child: Column(
+              //2
+              ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   Container(
-                    child: Row(
+                    child: Column(
                       children: [
-                        Expanded(
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * 0.05,
-                            color: Colors.transparent,
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Positioned(
-                                  top: 10,
-                                  left: 10,
-                                  right: 10,
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.05,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 12, vertical: 10),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(8),
+                        Container(
+                          height: 150,
+                          margin: EdgeInsets.symmetric(horizontal: 12),
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                blurRadius: 10,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: Stack(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.symmetric(horizontal: 10),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    CustomTextField(
+                                      hintText: "From",
+                                      imagePath:
+                                          'assets/icons/departure_icon.png',
+                                      controller: controller.fromController,
                                     ),
-                                    child: TextFormField(
-                                      controller: controller.dateController,
-                                      readOnly: true,
-                                      onTap: () => controller.pickDate(context),
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        isDense: true,
-                                        suffixIcon: IconButton(
-                                          icon: Icon(Icons.calendar_today,
-                                              color: Colors.grey),
-                                          onPressed: () =>
-                                              controller.pickDate(context),
+                                    Container(
+                                      height: 2,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.7,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Colors.green,
+                                            Colors.green.withOpacity(0.1),
+                                          ],
+                                          begin: Alignment.centerLeft,
+                                          end: Alignment.centerRight,
                                         ),
                                       ),
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        height: 1.5,
-                                      ),
                                     ),
-                                  ),
+                                    CustomTextField(
+                                      hintText: "To",
+                                      imagePath: 'assets/icons/location1.png',
+                                      controller: controller.toController,
+                                    ),
+                                  ],
                                 ),
-                                Positioned(
-                                  top: 0,
-                                  left: 20,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffECF2E7),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                    ),
-                                    padding: EdgeInsets.all(4),
-                                    child: Text(
-                                      'Departure',
-                                      style: GoogleFonts.metrophobic(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.0,
-                                        decoration: TextDecoration.none,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
+                              ),
+                              Positioned(
+                                top: 50,
+                                right: 20,
+                                child: Container(
+                                  margin: EdgeInsets.all(5),
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xffECF2E7)),
+                                  child: Center(
+                                      child:
+                                          Image.asset('assets/icons/swap.png')),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.02,
-                        ),
-                        Expanded(
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * 0.05,
-                            color: Colors.transparent,
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Positioned(
-                                  top: 10,
-                                  left: 10,
-                                  right: 10,
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.05,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 12, vertical: 10),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(8),
+                            height: MediaQuery.of(context).size.height * 0.01),
+
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 12),
+                          child: Column(
+                            children: [
+                              // Departure and Return Fields
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: InputFieldWithLabel(
+                                      label: 'Departure',
+                                      controller: controller.dateController,
+                                      isReadOnly: true,
+                                      onTap: () => controller.pickDate(
+                                          context, controller.dateController),
+                                      hintText: 'Select Departure Date',
                                     ),
-                                    child: TextFormField(
+                                  ),
+                                  SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.02),
+                                  Expanded(
+                                    child: InputFieldWithLabel(
+                                      label: 'Return',
                                       controller: controller.returnController,
-                                      readOnly: true,
-                                      onTap: () => controller.pickDate(context),
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        isDense: true,
-                                        suffixIcon: IconButton(
-                                          icon: Icon(Icons.calendar_today,
-                                              color: Colors.grey),
-                                          onPressed: () =>
-                                              controller.pickDate(context),
-                                        ),
-                                      ),
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        height: 1.5,
-                                      ),
+                                      isReadOnly: true,
+                                      onTap: () => controller.pickDate(
+                                          context, controller.returnController),
+                                      hintText: 'Select Return Date',
                                     ),
                                   ),
-                                ),
-                                Positioned(
-                                  top: 0,
-                                  left: 20,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffECF2E7),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                    ),
-                                    padding: EdgeInsets.all(4),
-                                    child: Text(
-                                      'return',
-                                      style: GoogleFonts.metrophobic(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.0,
-                                        decoration: TextDecoration.none,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                  Container(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * 0.05,
-                            color: Colors.transparent,
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Positioned(
-                                  top: 10,
-                                  left: 10,
-                                  right: 10,
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.05,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 12, vertical: 10),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: TextFormField(
+                                ],
+                              ),
+                              SizedBox(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.02),
+
+                              // Travelers and Cabin Class Fields
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: InputFieldWithLabel(
+                                      label: 'Travelers',
                                       controller:
                                           controller.travelersController,
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        isDense: true,
-                                      ),
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        height: 1.5,
-                                      ),
+                                      isReadOnly: false,
+                                      onTap: () {},
+                                      hintText: 'Enter number of travelers',
                                     ),
                                   ),
-                                ),
-                                Positioned(
-                                  top: 0,
-                                  left: 20,
-                                  child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffECF2E7),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(5)),
-                                      ),
-                                      padding: EdgeInsets.all(4),
-                                      child: Text(
-                                        'Travelers',
-                                        style: GoogleFonts.metrophobic(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.0,
-                                          decoration: TextDecoration.none,
-                                          color: Colors.black,
-                                        ),
-                                      )),
-                                ),
-                              ],
-                            ),
+                                  SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.02),
+                                  Expanded(
+                                    child: InputFieldWithLabel(
+                                      label: 'Cabin Class',
+                                      controller:
+                                          controller.cabinclassController,
+                                      isReadOnly: false,
+                                      onTap: () {},
+                                      hintText: 'Select Cabin Class',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.02,
-                        ),
-                        Expanded(
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * 0.05,
-                            color: Colors.transparent,
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Positioned(
-                                  top: 10,
-                                  left: 10,
-                                  right: 10,
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.05,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 12, vertical: 10),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: TextFormField(
-                                      controller:
-                                          controller.cabinclassController,
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        isDense: true,
-                                      ),
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        height: 1.5,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: 0,
-                                  left: 20,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffECF2E7),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                    ),
-                                    padding: EdgeInsets.all(4),
-                                    child: Text(
-                                      'Cabin Class',
-                                      style: GoogleFonts.metrophobic(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.0,
-                                        decoration: TextDecoration.none,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                            height: MediaQuery.of(context).size.height * 0.02),
+
+                        //button
+                        StyledButton(
+                          text: 'Search Flights',
+                          onPressed: () {
+                            print('Button Pressed!');
+                          },
                         ),
                       ],
                     ),
                   ),
+
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+
+                  //3
+                  InspirationListWidget(controller: controller),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                  //hotelpackage
+                  FlightHotelPackage(controller: controller),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                 ],
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       );
     });
