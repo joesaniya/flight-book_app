@@ -1,16 +1,62 @@
-# flight_booking_app
+# Flight Booking Application
 
-A new Flutter project.
+This project is a technical task demonstrating UI design and implementation for a flight booking application using Flutter. It includes two key screens: a **Flight Search Screen** and a **Flight Details Screen**, with clean architecture and state management using GetX.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Features
+1. **Flight Search Screen**:
+   - Users can input the origin, destination, and date to search for flights.
+   - Interactive and visually appealing UI based on the provided Figma designs.
 
-A few resources to get you started if this is your first Flutter project:
+2. **Flight Details Screen**:
+   - Displays the selected flight's details.
+   - Provides the option to proceed with booking.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3. **Navigation**:
+   - Seamless navigation between the two screens using GetX.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4. **Clean and Responsive UI**:
+   - Optimized for both mobile and tablet screens.
+
+---
+
+## Tech Stack
+- **Framework**: Flutter
+- **State Management**: GetX
+- **Design Assets**: Figma
+
+---
+
+## Project Structure
+This project follows the **Clean Architecture** principles:
+
+
+---
+
+## Screens Overview
+
+### 1. Flight Search Screen
+- **Purpose**: Allows users to search for flights based on specified criteria.
+- **UI Features**: 
+  - Dropdowns for origin and destination.
+  - Date picker for flight date.
+  - Search button.
+
+### 2. Flight Details Screen
+- **Purpose**: Displays detailed information about the selected flight.
+- **UI Features**:
+  - Flight information (e.g., airline, time, price).
+  - A button to proceed with booking.
+
+---
+
+## Installation
+
+### Prerequisites
+- Flutter SDK installed
+- Android Studio or Visual Studio Code set up for Flutter development
+
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/joesaniya/flight-book_app.git
