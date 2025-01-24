@@ -10,4 +10,6 @@ class AppColors {
   static const Color appbarColor = Color(0xFFC4E59E); // Green
   static const Color statusbarColor = Color(0xFF63AF23); // Green
   static const Color appbartexttileColor = Color(0xFF49454F);
+  static const Color orangeColor = Color(0xFFFA7927);
+  static const Color text_Color = Color(0xFF434343);
 }
